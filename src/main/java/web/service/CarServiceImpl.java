@@ -6,6 +6,7 @@ import web.dao.CarDao;
 import web.model.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -22,6 +23,6 @@ public class CarServiceImpl implements CarService {
         if (count < 0) {
             throw new IllegalArgumentException("Ошибка. Отрицательное число");
         }
-        return carDao.getCar(count);
+        return carDao.getCar(count).stream().limit(count).collect(Collectors.toList());
     }
 }
