@@ -19,10 +19,10 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> getCar(int count) {
+    public List<Car> getCars(int count) {
         if (count < 0) {
             throw new IllegalArgumentException("Ошибка. Отрицательное число");
         }
-        return carDao.getCar(count).stream().limit(count).collect(Collectors.toList());
+        return carDao.getCars().stream().limit(count).collect(Collectors.toList());
     }
 }
